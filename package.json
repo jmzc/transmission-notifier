@@ -1,0 +1,27 @@
+{
+  "name": "transmission-notifier",
+  "description": "A Transmission notifier.",
+  "tags": [
+    "transmission"
+  ],
+  "version": "0.0.1",
+  "author": {
+    "name": "Jose Maria Zaragoza",
+    "email": "jmzc@vodafone.es"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/jmzc/transmission-notifier.git"
+  },
+  "bugs": {
+    "url": "http://github.com/jmzc/transmission-notifier/issues"
+  },
+  "engines": [
+    "node >= 0.8.0"
+  ],
+  "main": "transmission.js",
+  "dependencies": {
+    "scp": "~0.0.3",
+    "nodemailer": "~0.6.5"
+  }
+}
