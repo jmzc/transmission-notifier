@@ -10,7 +10,6 @@ var http = require('http') ,scp  = require('scp'), fs = require('fs'), path = re
 
 var configuration = require('./configuration');
 
-console.info(configuration.notify.user);
 
 
 var escape = function (string)
@@ -19,6 +18,9 @@ var escape = function (string)
   string = string.replace(/\s/g,"\\\\ ");
   string = string.replace(/\(/g,"\\\\(");
   string = string.replace(/\)/g,"\\\\)");
+  string = string.replace(/'/g,"\\\\'");
+  string = string.replace(/\./g,"\\\\.");
+
   
   return string;
   
@@ -261,11 +263,14 @@ var send = function(option,json)
       
       header['x-transmission-session-id'] = response.headers['x-transmission-session-id'];
       option.headers = header;
+
       
       send(option,json);
       
       return;
     }
+	
+
     
     /*
     If no 'response' handler is added, then the response will be entirely discarded. 
@@ -285,7 +290,8 @@ var send = function(option,json)
     {
 	      
 	  var message = JSON.parse(text);
-
+	  
+	  //console.info(JSON.stringify(message))
      
 	  download(message);
 
